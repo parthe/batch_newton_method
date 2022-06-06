@@ -19,13 +19,11 @@ def get_hessian_batched(func, input_tensor):
     """
     x_h = input_tensor.clone().requires_grad_(True)
 
-    def get_sum_of_gradients(x_):
-        h = func(x_)
-        h.backward(create_graph=True)
-        # print(x_.grad)
-        return x_.grad.sum(0)
+    def get_sum_of_gradients(x):
+        h = f(x)
+        return torch.autograd.grad(h, x, create_graph=True)[0].sum(0)
 
-    hessian = jacobian(get_sum_of_gradients, x_h).swapaxes(0, 1)
+    hessian = jacobian(get_sum_of_gradients, x, vectorize=True).swapaxes(0, 1)
     sym_hessian = (hessian + hessian.swapaxes(-1, -2)) / 2
     return sym_hessian
 
