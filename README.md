@@ -4,6 +4,6 @@ We solve an optimization problem over matrix variables such that the objective f
 
 As an application, we use this batch newton method for computing the generalized proximal operator
 
-$$\mathrm{prox}_f(\mathbf{R};Q):=\underset{X}{\rm argmin} \sum_{i=1}^n f(\mathbf{X}_i) + $$
+$$\mathrm{prox}_f(\mathbf{R};Q):=\underset{X}{\rm argmin} $$
 
 where $\mathbf{X}_i$ are rows of $\mathbf{X}\in\mathbb{R}^{n\times k}$, and the Mahalanobis-type norm $||\mathbf{X}||_Q^2 = {\rm trace}(\mathbf{X}^\top \mathbf{X} Q)$ for some positive definite matrix $Q$
